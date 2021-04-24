@@ -1,10 +1,10 @@
 const mysql = require('mysql2');
 
 const mysqlConnection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'root',
-    database: 'eps_poli',
+    host: '3.139.66.15',
+    user: 'coviduser',
+    password: 'covidpassword',
+    database: 'coviddb',
     multipleStatements: true
 });
 

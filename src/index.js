@@ -13,8 +13,8 @@ app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 
 //routes
-app.use(require('./routes/index'));
-//app.use(require('./routes/db'));
+app.use('/api/usuarios',require('./routes/index'));
+
 
 
 //starting the server

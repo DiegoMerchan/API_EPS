@@ -47,6 +47,28 @@ router.post('/', (req, res) => {
   
   });
 
+    // PUT Modificar usuario
+
+router.put('/', (req, res) => {
+  const {id_paciente, id_vacuna, vacunado,id} = req.body;
+  console.log(id_paciente, id_vacuna, vacunado, id);
+  const query = `
+  UPDATE control
+  SET id_paciente = ?, id_vacuna = ?, vacunado = ?
+  WHERE id = ?
+  `;
+  mysqlConnection.query(query, [id_paciente, id_vacuna, vacunado, id], (err, rows, fields) => {
+    if(!err) {
+      res.json({status: 'Usuario Guardado'});
+    } else {
+      console.log(err);
+    }
+   
+  });
+
+});
+
+
 
   // DELETE borrar un usuario 
 

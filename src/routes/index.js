@@ -1,37 +1,20 @@
-const { Router } = require('express');
-const router = Router();
-const mariadb = require('mariadb');
-
-const pool = mariadb.createPool({
-    host: '3.139.66.15',
-    user: 'coviduser',
-    password: 'covidpassword',
-    database: 'coviddb'
-
-});
-
-//router.get('/test', (req, res) => {
-//    const data = {
-//        "name": "Arquitectura de software",
-//        "Grupo": "2"
-
-//    };
-//    res.send(data);
-//});
+  
+const express = require('express');
+const router = express.Router();
+const mysqlConnection  = require('../db.js');
 
 
-async function main(){
-    try{
-        let conn = await pool.getConnection();
-        let rows = await conn.query("SELECT * from control");
-        console.log(rows);
-    }catch(err){
-        
+// GET an user
+router.get('/:id', (req, res) => {
+  const { id } = req.params; 
+  mysqlConnection.query('SELECT * from usuario WHERE id = ?', [id], (err, rows, fields) => {
+    if (!err) {
+      res.json(rows[0]);
+    } else {
+      console.log(err);
     }
-}
-
-main();
+  });
+});
 
 
 module.exports = router;
-

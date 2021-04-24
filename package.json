@@ -13,6 +13,8 @@
     "express": "^4.17.1",
     "mariadb": "^2.5.3",
     "morgan": "^1.10.0",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.2.5",
     "node-fetch": "^2.6.1",
     "underscore": "^1.13.1"
   },
